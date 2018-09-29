@@ -5,8 +5,8 @@
     </div>
   </div>
     <div class="row  portadasEstrenos">
-      <div class="col-6 uno">
-        <div class="contenedorImg">
+      <div class=" row col-12 col-md-6 col-lg-6 uno">
+        <div class="contenedorImg col-6 contPortadas">
             <img class=portrait src="images/CoDBO3.jpg" alt="">
             <p id=nombreJuego>Call Of Duty Black Ops 4</p>
             <div class="row col-12 precioCarro">
@@ -20,7 +20,7 @@
 
 
         </div>
-        <div class="contenedorImg">
+        <div class="contenedorImg  col-6 contPortadas">
             <img class=portrait src="images/fallout76.jpg" alt="">
             <p id=nombreJuego>Fallout 76</p>
             <div class="row precioCarro">
@@ -33,8 +33,8 @@
             </div>
         </div>
       </div>
-      <div class="col-6 dos">
-        <div class="contenedorImg">
+      <div class=" row col-12 col-md-6 col-lg-6 dos">
+        <div class="contenedorImg col-6 contPortadas">
             <img class=portrait src="images/MetroExodus.jpg" alt="">
             <p id=nombreJuego>Metro Exodus</p>
             <div class="row precioCarro">
@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        <div class="contenedorImg">
+        <div class="contenedorImg col-6 contPortadas">
             <img class=portrait src="images/pes19.jpg" alt="">
             <p id=nombreJuego>Pro Evolution Soccer 19</p>
             <div class="row precioCarro">

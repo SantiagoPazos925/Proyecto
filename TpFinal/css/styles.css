@@ -6,6 +6,18 @@
 	     url('../eliantoFont/elianto-regular-webfont.ttf') format('truetype'),
 	     url('../eliantoFont/elianto-regular-webfont.svg#webfont') format('svg');
 }
+div.row{
+   margin-right: 0px;
+	 margin-left: 0px;
+}
+
+div.container-fluid{
+   padding-right: 0px;
+	 padding-left: 0px;
+}
+#imagenCarrusel{
+	height: 200px;
+}
 .header{
   padding-top: 15px;
   background-color:rgb(15, 15, 15);
@@ -37,15 +49,15 @@ div .logo h2{
   font-size: 25px;
 }
 
-.search {
+#search {
   text-align: center;
   padding-bottom: 15px;
 
 }
-.search .searching{
-padding-right: 0px;
+.searching{
+padding: 0px;
 }
-.search .searching input{
+.searching input{
   text-decoration: none;
   border-style: none;
   border-top-left-radius: 10px;
@@ -54,9 +66,11 @@ padding-right: 0px;
   height: 100%;
 
 }
-
+.buscador{
+	padding:0px;
+}
 .iconSearch {
-  padding-right: 30px;
+
   text-align: center;
   color:white;
   font-size: 20px;
@@ -85,9 +99,9 @@ padding-right: 0px;
   border-style:inset;
 }
 .portadasEstrenos{
+	margin-left: 10px;
+	margin-right: 10px;
 
-  margin-left: 5px;
-  margin-right: 5px;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -113,18 +127,21 @@ padding-right: 0px;
   transition:all .5s ease-in-out;
   filter: saturate(50%);
 }
-.estrenos{
+.contPortadas{
+	padding:0px;
 
 
 }
+
 .uno{
-  padding-left: 0px;
-  padding-right: 0px;
+  padding: 0px;
 
 }
 .dos{
-  padding-left: 0px;
+  padding: 0px;
+
 }
+
 .separador{
   width: 100%;
   height: 38px;
@@ -205,4 +222,97 @@ padding-right: 0px;
 
 .carousel-control-next{
   padding-left: 40px;
+}
+.categorias{
+	display: none;
+}
+@media (min-width: 768px){
+	#imagenCarrusel{
+		height: 300px;
+	}
+	.uno{
+
+		padding-left: 20px;
+	}
+	.dos{
+
+		padding-right: 20px;
+	}
+	#search{
+		width: 500px;
+	}
+}
+@media( min-width: 1024px){
+	#imagenCarrusel{
+		height: 500px;
+	}
+	.iconos{
+		display: none;
+	}
+
+	.categorias {
+		display: inline-block;
+		color:white;
+		padding: 0px;
+	}
+	.categorias ul{
+		list-style:none;
+
+	}
+
+	.header{
+
+		height: 175px;
+	}
+	.categorias ul li{
+		padding-top: 20px;
+		padding-bottom: 20px;
+		font-family: 'elianto', Arial, sans-serif;
+		font-size: 15px;
+		transition:all .5s ease-in-out;
+		border: none;
+
+
+	}
+		.categorias ul li :hover{
+			border: 1px solid red;
+
+		}
+	div .logo h2 {
+	  font-size: 40px;
+		text-align: left;
+		padding-left: 100px;
+
+	}
+	.carouselPrincipal{
+		padding-top: 170px;
+	}
+	#navText{
+		transition:all .2s ease-in-out;
+		padding: 0px;
+	}
+	#navText:hover{
+		color: rgb(218, 40, 40);
+		border-bottom:2px solid rgb(218, 40, 40);
+	}
+	.carrito{
+		color: white;
+		font-size: 30px;
+		text-align: center;
+		padding-top: 7px;
+		padding-left: 0px;
+		padding-right: 0px;
+		transition:all .2s ease-in-out;
+
+	}
+	.carrito:hover{
+		color:rgb(218, 40, 40);
+	}
+	.navigation{
+		margin: 0px;
+		padding: 0px;
+	}
+	.navBar{
+		padding-bottom: 10px;
+	}
 }
