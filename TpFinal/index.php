@@ -13,6 +13,7 @@
   </head>
   <body>
       <h2>hola</h2>
+      <h4>hola como estas</h4>
       <?php
 
       include("header.php");
