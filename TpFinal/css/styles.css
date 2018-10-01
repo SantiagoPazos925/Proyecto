@@ -318,3 +318,10 @@ padding: 0px;
 		padding-bottom: 10px;
 	}
 }
+.footer{
+	background-color:rgb(15, 15, 15);
+	text-align: center;
+}
+.footer h5{
+	color: rgb(203, 51, 42);
+}

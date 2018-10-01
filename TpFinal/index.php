@@ -18,6 +18,7 @@
       include("carousel.php");
       include("estrenos.php");
       include("destacados.php");
+      include('footer.php');
       ?>
 
 
