@@ -287,11 +287,13 @@ padding: 0px;
 	.carouselPrincipal{
 		padding-top: 170px;
 	}
-	#navText{
+	#navText {
+		color: white;
+		text-decoration: none;
 		transition:all .2s ease-in-out;
 		padding: 0px;
 	}
-	#navText:hover{
+	#navText :hover{
 		color: rgb(218, 40, 40);
 		border-bottom:2px solid rgb(218, 40, 40);
 	}

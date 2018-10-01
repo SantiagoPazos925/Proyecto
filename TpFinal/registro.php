@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="eliantoFont/stylesheet.css" type="text/css" charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/formStyles.css">
+
     <meta charset="utf-8">
     <title>Login</title>
   </head>
@@ -48,8 +50,13 @@
       $errorDatos = 'ingrese datos';
 
     ?>
-    <div class="contenedorForm col-6 ">
-      <div class="contenedor col-6">
+    <div class="registrate">
+      <h2>Se parte de la comunidad <span style="color:rgb(203, 51, 42);">Digital</span>Games!</h2>
+    </div>
+
+    <div class="contenedorForm col-10 offset-1">
+
+      <div class="contenedor ">
         <form class="login" action="registro.php" method="post" enctype="multipart/form-data">
           <label for="">Usuario: <span class="error" ><?php echo($errorUsuario); ?></span> <br><input type="text" name="user" value=""></label>
           <br><br>

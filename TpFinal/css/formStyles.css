@@ -41,11 +41,22 @@ div .logo h2{
   font-size: 25px;
 }
 .contenedorForm{
+
 	display: flex;
 	justify-content: center;
-	height: 100vh;
+
 	align-items: center;
 
+}
+.contenedor{
+
+	text-align: center;
+	border-radius: 10px;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	background-color: rgba(54, 54, 54, 0.91);
 }
 .search {
   text-align: center;
@@ -223,4 +234,16 @@ form label{
 
 .carousel-control-next{
   padding-left: 40px;
+}
+.registrate {
+	font-family: 'elianto', Arial, sans-serif;
+	text-align: center;
+	padding-top: 150px;
+	color:white;
+	padding-bottom: 20px;
+}
+@media(min-width: 1024px){
+	.registrate{
+		padding-top: 200px;
+	}
 }

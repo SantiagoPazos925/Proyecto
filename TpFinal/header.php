@@ -14,16 +14,17 @@
 
       <ul class="row col-12 navigation" style="text-align: center;">
         <div id="navText" class="col-2">
-          <li>Home</li>
+          <a id="navText" href="index.php"><li >Home</li></a>
         </div>
         <div  id="navText" class="col-4">
-          <li>Preguntas Frecuentes</li>
+          <a id="navText" href="preguntasFrecuentes.php"><li >Preguntas Frecuentes</li></a>
         </div>
         <div  id="navText" class="col-2">
-          <li>Registro</li>
+
+          <a id="navText" href="registro.php"><li >Registro</li></a>
         </div>
         <div  id="navText" class="col-2">
-          <li>Login</li>
+          <a id="navText" href="login.php"><li >Login</li></a>
         </div>
         <div class="col-2 carrito">
 

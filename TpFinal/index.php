@@ -12,9 +12,7 @@
     <title></title>
   </head>
   <body>
-      <h2>hola</h2>
-      <h4>hola como estas</h4>
-      <h2>Bien bien</h2>
+  
       <?php
 
       include("header.php");
