@@ -226,6 +226,53 @@ padding: 0px;
 .categorias{
 	display: none;
 }
+.footer{
+	padding-top: 20px;
+	background-color:rgb(59, 59, 59);
+	text-align: center;
+	padding-bottom: 30px;
+
+}
+.footer h5{
+	color: rgb(203, 51, 42);
+}
+.footer a{
+	color:rgb(205, 205, 205);
+	font-size: 15px;
+}
+.footerDerechos {
+	color:grey;
+	font-size: 13px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	margin: 0px;
+}
+.contenedorDerechos{
+	background-color: rgb(43, 43, 43);
+	margin: 0px;
+}
+.nuestrasRedes{
+	color: rgb(68, 68, 68);
+	padding-top: 20px;
+	text-align: center;
+	font-family: 'elianto', Arial, sans-serif;
+	padding-bottom: 20px;
+	background-color: rgb(222, 222, 222);
+}
+#iconFooter{
+	font-size: 30px;
+	padding-right: 0px;
+	padding-left: 0px;
+
+}
+#textRedes{
+	text-align: center;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 10px;
+	font-size: 15px;
+}
+
 @media (min-width: 768px){
 	#imagenCarrusel{
 		height: 300px;
@@ -317,11 +364,4 @@ padding: 0px;
 	.navBar{
 		padding-bottom: 10px;
 	}
-}
-.footer{
-	background-color:rgb(15, 15, 15);
-	text-align: center;
-}
-.footer h5{
-	color: rgb(203, 51, 42);
 }
