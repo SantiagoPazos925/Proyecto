@@ -12,7 +12,6 @@
     <title></title>
   </head>
   <body>
-  
       <?php
 
       include("header.php");
