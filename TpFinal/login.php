@@ -55,7 +55,7 @@
   <div class="contenedorForm col-10 offset-1">
 
     <div class="contenedor ">
-      <form class="login" action="registro.php" method="post" enctype="multipart/form-data">
+      <form class="login" action="login.php" method="post" enctype="multipart/form-data">
         <label for="">Usuario: <span class="error" ><?php echo($errorUsuario); ?></span> <br><input type="text" name="user" value=""></label>
         <br><br>
         <label for="">Contraseña: <span class="error" ><?= ($errorPassword); ?></span><br><input type="password" name="password" value=""></label>
