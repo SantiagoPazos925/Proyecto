@@ -16,26 +16,25 @@
   <body>
     <?php
     include("header.php");
+    $error = 1;
     $errorDatos = '';
     $errorEmail = '';
     $errorConsola = '';
     $errorUsuario = '';
     $errorPassword = '';
-    if($_POST){
+    if(!empty($_POST)){
       if (!empty($_POST['user'])){
         if(!empty($_POST['email'])){
-          if(!empty($_POST['email'])){
+          if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
             if(!empty($_POST['password'])){
               if(!empty($_POST['consola'])){
-                echo 'todo ok';
+                $error = 0;
               }
               else
                 $errorConsola = 'ingrese consola';
             }
-            else{
-              echo 'entro';
+            else
               $errorPassword = 'ingrese contraseña';
-            }
           }
           else
           $errorEmail = 'Email invalido';
@@ -57,7 +56,8 @@
     <div class="contenedorForm col-10 offset-1">
 
       <div class="contenedor ">
-        <form class="login" action="registro.php" method="post" enctype="multipart/form-data">
+        <form class="login" action="registro.php" method="post" enctype="multipart/form-data" onsubmit="return false">
+          <span class="error"><?php echo($errorDatos); ?></span> <br>
           <label for="">Usuario: <span class="error" ><?php echo($errorUsuario); ?></span> <br><input type="text" name="user" value=""></label>
           <br><br>
           <label for="">Email: <span class="error" ><?= ($errorEmail); ?></span><br><input type="email" name="email" value=""></label>
