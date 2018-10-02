@@ -17,6 +17,7 @@
       include("header.php");
       include("carousel.php");
       include("estrenos.php");
+      include("categorias.php");
       include("destacados.php");
       include('footer.php');
       ?>

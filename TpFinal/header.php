@@ -3,7 +3,7 @@
 
 <div class="row navBar">
   <div class="col-6  logo">
-    <h2><span style='color:rgb(203, 51, 42)'>Digital</span>games</h2>
+    <h2><a style="text-decoration:none" href="index.php"><span style='color:rgb(203, 51, 42);'>Digital</span><span style="color:white;">games</span></h2></a>
   </div>
   <div class="col-6 iconos">
 
@@ -17,7 +17,7 @@
           <a id="navText" href="index.php"><li >Home</li></a>
         </div>
         <div  id="navText" class="col-4">
-          <a id="navText" href="preguntasFrecuentes.php"><li >Preguntas Frecuentes</li></a>
+          <a id="navText" href="faq.php"><li >Preguntas Frecuentes</li></a>
         </div>
         <div  id="navText" class="col-2">
 

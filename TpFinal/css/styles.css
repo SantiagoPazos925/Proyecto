@@ -48,7 +48,9 @@ div .logo h2{
   margin-top: 5px;
   font-size: 25px;
 }
-
+.cat{
+	display: none;
+}
 #search {
   text-align: center;
   padding-bottom: 15px;
@@ -129,7 +131,7 @@ padding: 0px;
 }
 .contPortadas{
 	padding:0px;
-
+	text-align: center;
 
 }
 
@@ -196,8 +198,17 @@ padding: 0px;
   padding-right:5px;
 }
 #nombreJuego{
-  color:white;
+  color:rgb(46, 178, 182);
   margin-bottom: 0px;
+	transition:all .5s ease-in-out;
+}
+.juegosIndex:hover{
+
+	  filter: saturate(100%);
+	  border: 3px;
+	  border-color: black;
+	  border-style:inset;
+
 }
 .carouselPrincipal{
   padding-top: 70px;
@@ -272,7 +283,87 @@ padding: 0px;
 	padding-top: 10px;
 	font-size: 15px;
 }
+#JuegosCat{
+	margin: 0px;
+	font-size: 13px;
+}
+.contenedorJuegos{
+	padding: 0px;
+	padding-top: 30px;
+}
+.containerGralJuegos{
+background-color: rgb(215, 215, 215);
+}
+.juegosIndex{
+	margin-top:  15px;
+	margin-bottom:  5px;
+	width: 107px;
+	height: 162px;
 
+	transition:all .5s ease-in-out;
+	filter: saturate(50%);
+
+}
+.contPortadasIndex{
+	text-align: center;
+
+}
+.precioIndex{
+	padding: 0px;
+	color: rgb(47, 47, 47);
+
+	text-align: left;
+}
+.precioIndex h4{
+	font-size: 20px;
+}
+.enviarCarrito{
+
+	text-align: left;
+	padding-bottom: 15px;
+}
+.enviarCarrito button{
+	padding: 5px;
+	border-style: outset;
+	border-radius: 5px;
+	background-color: rgba(181, 181, 181, 0.74);
+	transition:all .5s ease-in-out;
+}
+.enviarCarrito button:hover{
+	background-color: rgba(82, 82, 82, 0.74);
+}
+.cat ul{
+	font-size: 20px;
+	padding-top:10px;
+	list-style: none;
+	text-align: center;
+	padding-top: 0px;
+
+}
+.cat h4{
+	background-color: rgb(32, 32, 32);
+	color: white;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius:10px;
+	padding-bottom: 10px;
+}
+.cat li{
+	border: 1px solid rgba(27, 27, 27, 0.78);
+	border-radius: 2px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	margin-bottom:5px;
+	text-align: center;
+	font-size: 15px;
+}
+.categoria{
+	transition:all .5s ease-in-out;
+}
+.categoria:hover{
+	color: white;
+	background-color: rgba(27, 27, 27, 0.78);
+}
 @media (min-width: 768px){
 	#imagenCarrusel{
 		height: 300px;
@@ -287,6 +378,14 @@ padding: 0px;
 	}
 	#search{
 		width: 500px;
+	}
+	.juegosIndex{
+		width: 307px;
+		height: 362px;
+	}
+	.contPortadasIndex{
+		text-align: left;
+
 	}
 }
 @media( min-width: 1024px){
@@ -363,5 +462,16 @@ padding: 0px;
 	}
 	.navBar{
 		padding-bottom: 10px;
+	}
+	.juegosIndex{
+		width: 207px;
+		height: 262px;
+	}
+	.contPortadasIndex{
+		text-align: left;
+
+	}
+	.cat{
+		display: inline-block;
 	}
 }

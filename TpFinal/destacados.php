@@ -1,5 +1,10 @@
 <div class="container-fluid">
   <div class="row">
+    <div class="col-12 separador">
+        <h2 style="color:white">Des<span style="color:rgb(203, 51, 42)">tacados</span</h2>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-12 contenedorDestacados">
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
