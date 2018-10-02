@@ -16,7 +16,8 @@
   <body>
     <?php
     include("header.php");
-    $error = 1;
+    include("footer.php");
+    $error = 0;
     $errorNombre = '';
     $errorDatos = '';
     $errorEmail = '';
@@ -27,57 +28,57 @@
     $errorAvatar = '';
     $errorPais = '';
     $ext = '';
-    if(!empty($_POST)){
-      if (!empty($_POST['user'])){
-        if(!empty($_POST['name'])){
-          if(!(strlen($_POST['name']) < 10)){
-            if(!empty($_POST['email'])){
-              if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-                if(!empty($_POST['password'])){
-                  if(strcmp($_POST['password'], $_POST['password1']) == 0){
-                    if(!empty($_POST['consola'])){
-                      if(!empty($_POST('pais'))){
-                        if(!empty($_FILES['avatar'])){
-                          $ext = pathinfo($_FILES['avatar'], PATHINFO_EXTENSION);
-                          if( $ext == 'jpg' ||  $ext == 'png' || $ext == 'jpeg' ){
-                            $error = 0;
-                            }
-                            else
-                              $errorAvatar = 'formato invalido';
-                          }
-                          else
-                            $errorAvatar = 'ingrese un archivo imagen';
-                        }
-                        else
-                          $errorPais = 'seleccione un pais de la lista';
-                      }
-                      else
-                        $errorConsola = 'Seleccione una consola de la lista';
-                    }
-                    else
-                      $errorPassword1 = 'Las contraseñas deben ser iguales';
-                  }
-                  else
-                    $errorPassword = 'Ingrese contraseña';
-                }
-                else
-                  $errorEmail = 'Email invalido';
-              }
-              else
-                $errorEmail = 'ingrese email';
-            }
-            else
-              $errorNombre = 'nombre demasiado corto';
-          }
-          else
-            $errorNombre = 'Ingrese un nombre';
-        }
-        else
-          $errorUsuario = 'ingrese usuario';
-      }
-      else
+    if($_POST){
+      if(empty($_POST)){
+        $error = 1;
         $errorDatos = 'ingrese datos';
-
+      }
+      if(empty($_POST['user'])){
+        $error = 1;
+        $errorUsuario = 'ingrese usuario';
+      }
+      if(empty($_POST['name'])){
+        $error = 1;
+        $errorNombre = 'Ingrese un nombre';
+      }
+      if((strlen($_POST['name']) < 10)){
+        $error = 1;
+        $errorNombre = 'nombre demasiado corto';
+      }
+      if(empty($_POST['email'])){
+        $error = 1;
+        $errorEmail = 'ingrese email';
+      }
+      else  if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+          $error = 1;
+          $errorEmail = 'Email invalido';
+      }
+      if(empty($_POST['password'])){
+        $error = 1;
+        $errorPassword = 'Ingrese contraseña';
+      }
+      else if(strcmp($_POST['password'], $_POST['password1']) == 0){
+        $error = 1;
+        $errorPassword1 = 'Las contraseñas deben ser iguales';
+      }
+      if(empty($_POST['consola'])){
+        $error = 1;
+        $errorConsola = 'Seleccione una consola de la lista';
+      }
+      if(empty($_POST['pais'])){
+        $error = 1;
+        $errorPais = 'seleccione un pais de la lista';
+      }
+      if(empty($_FILES['avatar'])){
+        $error = 1;
+        $ext = pathinfo($_FILES['avatar'], PATHINFO_EXTENSION);
+      }
+      else if(!( $ext == 'jpg' ||  $ext == 'png' || $ext == 'jpeg' )){
+            $error = 1;
+            $errorAvatar = 'formato invalido';
+      }
+}
+        
     ?>
     <div class="registrate">
       <h2>Se parte de la comunidad <span style="color:rgb(203, 51, 42);">Digital</span>Games!</h2>
@@ -86,9 +87,9 @@
     <div class="contenedorForm col-10 offset-1">
 
       <div class="contenedor ">
-        <form class="login" action="registro.php" method="post" enctype="multipart/form-data" onsubmit="return false">
+        <form class="login" action="registro.php" method="post" enctype="multipart/form-data" >
           <span class="error"><?php echo($errorDatos); ?></span> <br>
-          <label for="">Nombre Completo: <span class="error" ><?php echo($errorNombre); ?></span> <br><input type="text" name="name" value=""></label>
+          <label for="">Nombre Completo: <span class="error" ><?php echo($errorNombre); ?></span> <br><input type="text" name="name" value="<?php echo (($_POST['name'])??'') ?>"></label>
           <br><br>
           <label for="">Usuario: <span class="error" ><?php echo($errorUsuario); ?></span> <br><input type="text" name="user" value=""></label>
           <br><br>
