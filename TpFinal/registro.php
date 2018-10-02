@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/formStyles.css">
 
     <meta charset="utf-8">
-    <title>Login</title>
+    <title>Registrarme</title>
   </head>
   <body>
     <?php
@@ -30,7 +30,7 @@
     if(!empty($_POST)){
       if (!empty($_POST['user'])){
         if(!empty($_POST['name'])){
-          if(strlen($_POST['name'] < 10)){
+          if(!(strlen($_POST['name']) < 10)){
             if(!empty($_POST['email'])){
               if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
                 if(!empty($_POST['password'])){
@@ -88,7 +88,7 @@
       <div class="contenedor ">
         <form class="login" action="registro.php" method="post" enctype="multipart/form-data" onsubmit="return false">
           <span class="error"><?php echo($errorDatos); ?></span> <br>
-          <label for="">Nombre Completo: <span class="error" ><?php echo($errorNombre); ?></span> <br><input type="text" name="Name" value=""></label>
+          <label for="">Nombre Completo: <span class="error" ><?php echo($errorNombre); ?></span> <br><input type="text" name="name" value=""></label>
           <br><br>
           <label for="">Usuario: <span class="error" ><?php echo($errorUsuario); ?></span> <br><input type="text" name="user" value=""></label>
           <br><br>
