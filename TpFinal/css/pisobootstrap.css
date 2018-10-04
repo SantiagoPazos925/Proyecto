@@ -1,0 +1,143 @@
+@font-face{
+	font-family: 'elianto';
+	src: url('../eliantoFont/elianto-regular-webfont.eot');
+	src: url('../eliantoFont/elianto-regular-webfont.eot?#iefix') format('embedded-opentype'),
+	     url('../eliantoFont/elianto-regular-webfont.woff') format('woff'),
+	     url('../eliantoFont/elianto-regular-webfont.ttf') format('truetype'),
+	     url('../eliantoFont/elianto-regular-webfont.svg#webfont') format('svg');
+     }
+
+
+
+body{
+  background-image: url('../imagenes/abc.png');
+  background-repeat: repeat;
+
+}
+
+.title{
+  background-color: black;
+}
+.title h1{
+  color: white;
+  text-align: center;
+  font-size: 100px;
+  font-family: 'elianto', Arial, sans-serif;
+}
+
+
+.segunda{
+  text-align: center;
+}
+
+.segunda h2{
+  font-size: 70px;
+}
+
+.segunda ul{
+  list-style: none;
+  font-size: 30px;
+}
+
+.juegos h2{
+  font-size: 50px;
+}
+
+.juegot{
+  text-align: center;
+}
+
+#altura{
+  height: 10px;
+}
+
+/* #headingOne{
+  padding: 0px;
+  margin: 0px;
+}
+
+#headingTwo{
+  padding: 0px;
+  margin: 0px;
+}
+
+#headingThree{
+  padding: 0px;
+  margin: 0px;
+}
+
+#headingFour{
+  padding: 0px;
+  margin: 0px;
+}
+
+#headingFive{
+  padding: 0px;
+  margin: 0px;
+} */
+.titular{
+  padding-top: 100px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.lul{
+
+  margin: 5px 0px;
+  display: flex;
+
+
+}
+
+#heading{
+  padding: 0px;
+  margin: 0px;
+}
+
+#heading p{
+  color: black;
+  margin: 0px;
+  text-align: center;
+  width: 100%;
+
+}
+
+.btn{
+  width: 100%;
+}
+
+.card{
+  width: 100%;
+  border: solid 2px;
+  border-color: rgb(182, 182, 182);
+  background-color: rgb(255, 255, 255);
+}
+
+.card-body{
+  text-align: center;
+}
+
+.row{
+  display: flex;
+}
+
+.container{
+align-content: center;
+
+}
+
+.back{
+  background-color: rgba(54, 54, 54, 0.91);
+  border-radius: 10px;
+  padding: 20px 0px;
+}
+
+
+
+
+@media( min-width: 1024px){
+  .titular{
+    padding-top: 200px;
+
+}
