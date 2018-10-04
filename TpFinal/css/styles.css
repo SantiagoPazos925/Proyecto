@@ -132,6 +132,7 @@ padding: 0px;
 .contPortadas{
 	padding:0px;
 	text-align: center;
+	height: 290px;
 
 }
 
@@ -146,10 +147,9 @@ padding: 0px;
 
 .separador{
   width: 100%;
-  height: 38px;
+  height:35px;
   background-color:rgb(32, 32, 32);
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
+
   text-align: center;
   font-family: 'elianto', Arial, sans-serif;
 
@@ -157,13 +157,13 @@ padding: 0px;
 .separador h2{
   padding-top: 5px;
   font-size: 25px;
+
 }
 .separador2{
   width: 100%;
   height: 38px;
   background-color:rgb(32, 32, 32);
-  border-bottom-left-radius: 50%;
-  border-bottom-right-radius: 50%;
+
 }
 
 .precioCarro{
@@ -175,7 +175,7 @@ padding: 0px;
 }
 .precio{
   padding: 0px;
-  padding-left: 20px;
+	padding-left: 10px;
   margin-top:  10px;
   text-align: center;
 }
@@ -189,6 +189,8 @@ padding: 0px;
   color: #7CC6FE;
   margin-top: 10px;
   padding: 0px;
+	text-align: right;
+	padding-right: 10px;
 }
 .carro i{
 
@@ -198,9 +200,12 @@ padding: 0px;
   padding-right:5px;
 }
 #nombreJuego{
+	text-align: center;
   color:rgb(46, 178, 182);
   margin-bottom: 0px;
 	transition:all .5s ease-in-out;
+	height: 48px;
+
 }
 .juegosIndex:hover{
 
@@ -226,13 +231,18 @@ padding: 0px;
 }
 .contenedorDestacados{
    background-color: rgba(255, 255, 250, 0.2);
+	 padding: 0px;
 }
 .carousel-control-prev{
   padding-right: 40px;
+
 }
 
 .carousel-control-next{
   padding-left: 40px;
+}
+.sr-only span{
+	font-size: 20px;
 }
 .categorias{
 	display: none;
@@ -297,8 +307,8 @@ background-color: rgb(215, 215, 215);
 .juegosIndex{
 	margin-top:  15px;
 	margin-bottom:  5px;
-	width: 107px;
-	height: 162px;
+	width: 140px;
+	height: 180px;
 
 	transition:all .5s ease-in-out;
 	filter: saturate(50%);
@@ -312,14 +322,14 @@ background-color: rgb(215, 215, 215);
 	padding: 0px;
 	color: rgb(47, 47, 47);
 
-	text-align: left;
+	text-align: center;
 }
 .precioIndex h4{
 	font-size: 20px;
 }
 .enviarCarrito{
 
-	text-align: left;
+	text-align: center;
 	padding-bottom: 15px;
 }
 .enviarCarrito button{
@@ -364,6 +374,13 @@ background-color: rgb(215, 215, 215);
 	color: white;
 	background-color: rgba(27, 27, 27, 0.78);
 }
+#nombreJuego2{
+	text-align: center;
+	color:rgb(46, 178, 182);
+	margin-bottom: 0px;
+	height: 48px;
+}
+
 @media (min-width: 768px){
 	#imagenCarrusel{
 		height: 300px;
@@ -380,12 +397,24 @@ background-color: rgb(215, 215, 215);
 		width: 500px;
 	}
 	.juegosIndex{
-		width: 307px;
-		height: 362px;
+		width: 226px;
+		height: 332px;
 	}
 	.contPortadasIndex{
 		text-align: left;
 
+	}
+	.precioCarro{
+		text-align: center;
+	}
+	.precioCarro h4{
+		text-align: center;
+	}
+	.contenedorJuegos .contPortadasIndex{
+		text-align: center;
+	}
+	#nombreJuego{
+		text-align: center;
 	}
 }
 @media( min-width: 1024px){
@@ -473,5 +502,32 @@ background-color: rgb(215, 215, 215);
 	}
 	.cat{
 		display: inline-block;
+	}
+
+	#JuegosCat{
+		text-align: left;
+	}
+	.precioCarro h4{
+		text-align: left;
+	}
+	.juegosIndex{
+		width: 100%;
+		height:340px;
+	}
+	#nombreJuego{
+		text-align: left;
+	}
+	.precioCarro h4{
+		padding-left: 30px;
+	}
+	.carro{
+		padding-right: 50px;
+	}
+
+}
+@media( min-width: 1440px){
+	.juegosIndex{
+		width: 100%;
+		height:480px;
 	}
 }
