@@ -16,7 +16,7 @@
   <body>
     <?php
     include("header.php");
-    include("footer.php");
+
     $error = 0;
     $errorNombre = '';
     $errorDatos = '';
@@ -78,7 +78,7 @@
             $errorAvatar = 'formato invalido';
       }
 }
-        
+
     ?>
     <div class="registrate">
       <h2>Se parte de la comunidad <span style="color:rgb(203, 51, 42);">Digital</span>Games!</h2>
@@ -360,7 +360,9 @@
           </select>
           <br><br><input type="submit" name="" value="Registarme" class="btn btn-primary">
         </form>
+
       </div>
+      
 
   </body>
 </html>
