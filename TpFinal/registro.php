@@ -16,7 +16,6 @@
   <body>
     <?php
     include("header.php");
-    include("footer.php");
     $error = 0;
     $errorNombre = '';
     $errorDatos = '';
@@ -34,51 +33,51 @@
         $errorDatos = 'ingrese datos';
       }
       if(empty($_POST['user'])){
-        $error = 1;
+        $error = 2;
         $errorUsuario = 'ingrese usuario';
       }
       if(empty($_POST['name'])){
-        $error = 1;
+        $error = 3;
         $errorNombre = 'Ingrese un nombre';
       }
-      if((strlen($_POST['name']) < 10)){
-        $error = 1;
+      if((strlen($_POST['name']) < 4)){
+        $error = 4;
         $errorNombre = 'nombre demasiado corto';
       }
       if(empty($_POST['email'])){
-        $error = 1;
+        $error = 5;
         $errorEmail = 'ingrese email';
       }
-      else  if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-          $error = 1;
+      if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+          $error = 6;
           $errorEmail = 'Email invalido';
       }
       if(empty($_POST['password'])){
-        $error = 1;
+        $error = 7;
         $errorPassword = 'Ingrese contraseña';
       }
-      else if(strcmp($_POST['password'], $_POST['password1']) == 0){
-        $error = 1;
+      if(!($_POST['password'] == $_POST['password1'])){
+        $error = 8;
         $errorPassword1 = 'Las contraseñas deben ser iguales';
       }
       if(empty($_POST['consola'])){
-        $error = 1;
+        $error =9;
         $errorConsola = 'Seleccione una consola de la lista';
       }
       if(empty($_POST['pais'])){
-        $error = 1;
+        $error = 10;
         $errorPais = 'seleccione un pais de la lista';
       }
-      if(empty($_FILES['avatar'])){
-        $error = 1;
-        $ext = pathinfo($_FILES['avatar'], PATHINFO_EXTENSION);
-      }
-      else if(!( $ext == 'jpg' ||  $ext == 'png' || $ext == 'jpeg' )){
-            $error = 1;
+      if(empty($_FILES['avatar']))
+        $error = 11;
+      else
+        $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+     if(!( $ext == 'jpg' ||  $ext == 'png' || $ext == 'jpeg' )){
+            $error = 12;
             $errorAvatar = 'formato invalido';
       }
 }
-        
+
     ?>
     <div class="registrate">
       <h2>Se parte de la comunidad <span style="color:rgb(203, 51, 42);">Digital</span>Games!</h2>
@@ -91,11 +90,12 @@
           <span class="error"><?php echo($errorDatos); ?></span> <br>
           <label for="">Nombre Completo: <span class="error" ><?php echo($errorNombre); ?></span> <br><input type="text" name="name" value="<?php echo (($_POST['name'])??'') ?>"></label>
           <br><br>
-          <label for="">Usuario: <span class="error" ><?php echo($errorUsuario); ?></span> <br><input type="text" name="user" value=""></label>
+          <label for="">Usuario: <span class="error" ><?php echo($errorUsuario); ?></span> <br><input type="text" name="user" value="<?php echo (($_POST['user'])??'') ?>"></label>
           <br><br>
-          <label for="">Email: <span class="error" ><?= ($errorEmail); ?></span><br><input type="email" name="email" value=""></label>
+          <label for="">Email: <span class="error" ><?php echo($errorEmail); ?></span><br><input type="email" name="email" value="<?php echo (($_POST['email'])??'') ?>"></label>
           <br><br>
-          <select name="pais"><span class="error" ><?= ($errorPais); ?></span>
+          <span class="error" ><?php echo($errorPais); ?></span><br>
+          <select name="pais" value = "<?php echo (($_POST['pais'])??'') ?>">
             <option value="">Seleccione Pais...</option>
             <option value="AF">Afghanistan</option>
             <option value="AL">Albania</option>
@@ -346,13 +346,13 @@
             <option value="ZW">Zimbabwe</option>
           </select>
           <br><br>
-          <label for="">Avatar: <span class="error" ><?= ($errorAvatar); ?></span><input type="file" name="avatar" value=""></label>
+          <label for="">Avatar: <span class="error" ><?php echo($errorAvatar); ?></span><input type="file" name="avatar" value="<?php echo (($_FILES['avatar'])??'') ?>"></label>
           <br><br>
-          <label for="">Contraseña: <span class="error" ><?= ($errorPassword); ?></span><br><input type="password" name="password" value=""></label>
+          <label for="">Contraseña: <span class="error" ><?php echo($errorPassword); ?></span><br><input type="password" name="password" value=""></label>
           <br><br>
-          <label for="">Repetir contraseña: <span class="error" ><?= ($errorPassword1); ?></span><br><input type="password" name="password1" value=""></label>
+          <label for="">Repetir contraseña: <span class="error"><?php echo($errorPassword1); ?></span><br><input type="password" name="password1" value=""></label>
           <br><br>
-          <select class="" name="consola"><span class="error" ><?= ($errorConsola); ?></span>
+          <select class="" name="consola" value = "<?php echo (($_POST['consola'])??'') ?>"><span class="error" ><?php echo($errorConsola); ?></span>
             <option value="">Seleccione Consola</option>
             <option value="ps4">PlayStation 4</option>
             <option value="xbox">Xbox One</option>
@@ -361,6 +361,10 @@
           <br><br><input type="submit" name="" value="Registarme" class="btn btn-primary">
         </form>
       </div>
-
+    </div>
+    <br><br>
+      <?php
+      include("footer.php");
+       ?>
   </body>
 </html>
