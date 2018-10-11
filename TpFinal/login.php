@@ -17,6 +17,7 @@
   $errorDatos = '';
   $errorUsuario = '';
   $errorPassword = '';
+if($_POST){
   if(!empty($_POST)){
     if (!empty($_POST['user'])){
           if(!empty($_POST['password'])){
@@ -31,6 +32,7 @@
           else {
             $errorDatos = 'Ingrese datos';
           }
+  }
 
   ?>
   <div class="registrate">

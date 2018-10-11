@@ -85,7 +85,7 @@
 
     <div class="contenedorForm col-10 offset-1">
 
-      <div class="contenedor ">
+      <div class="contenedor-fluid">
         <form class="login" action="registro.php" method="post" enctype="multipart/form-data" >
           <span class="error"><?php echo($errorDatos); ?></span> <br>
           <label for="">Nombre Completo: <span class="error" ><?php echo($errorNombre); ?></span> <br><input type="text" name="name" value="<?php echo (($_POST['name'])??'') ?>"></label>
