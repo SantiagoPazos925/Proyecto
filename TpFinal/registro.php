@@ -16,6 +16,7 @@
   <body>
     <?php
     include("header.php");
+
     $error = 0;
     $errorNombre = '';
     $errorDatos = '';
@@ -360,11 +361,14 @@
           </select>
           <br><br><input type="submit" name="" value="Registarme" class="btn btn-primary">
         </form>
+
       </div>
+
     </div>
     <br><br>
       <?php
       include("footer.php");
        ?>
+
   </body>
 </html>
