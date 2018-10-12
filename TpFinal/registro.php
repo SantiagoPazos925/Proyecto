@@ -16,12 +16,12 @@
   <body>
     <?php
     include("header.php");
-
+    include("conex.php");
     $error = 0;
     $errorNombre = '';
     $errorDatos = '';
     $errorEmail = '';
-    $errorConsola = '';
+    $errorplataforma = '';
     $errorUsuario = '';
     $errorPassword = '';
     $errorPassword1 = '';
@@ -61,9 +61,9 @@
         $error = 8;
         $errorPassword1 = 'Las contraseñas deben ser iguales';
       }
-      if(empty($_POST['consola'])){
+      if(empty($_POST['plataforma'])){
         $error =9;
-        $errorConsola = 'Seleccione una consola de la lista';
+        $errorplataforma = 'Seleccione una plataforma de la lista';
       }
       if(empty($_POST['pais'])){
         $error = 10;
@@ -76,6 +76,20 @@
      if(!( $ext == 'jpg' ||  $ext == 'png' || $ext == 'jpeg' )){
             $error = 12;
             $errorAvatar = 'formato invalido';
+      }
+      var_dump($_POST);
+      var_dump($error);
+      if($error ===  0){
+        move_uploaded_file($_FILES['avatar']['tmp_name'], 'avatars/'.$_POST['name'].'.'.$ext);
+
+        $registrar = 'INSERT INTO usuarios (nombre, email, pais, password, plataforma) VALUES (:nombre, :email, :pais, :password, :plataforma)';
+        $ins = $conex->prepare($registrar);
+        $ins->bindValue(':nombre', $_POST['name']);
+        $ins->bindValue(':email', $_POST['email']);
+        $ins->bindValue(':pais', $_POST['pais']);
+        $ins->bindValue(':password', $_POST['password']);
+        $ins->bindValue(':plataforma', $_POST['plataforma']);
+        $ins->execute();
       }
 }
 
@@ -353,8 +367,8 @@
           <br><br>
           <label for="">Repetir contraseña: <span class="error"><?php echo($errorPassword1); ?></span><br><input type="password" name="password1" value=""></label>
           <br><br>
-          <select class="" name="consola" value = "<?php echo (($_POST['consola'])??'') ?>"><span class="error" ><?php echo($errorConsola); ?></span>
-            <option value="">Seleccione Consola</option>
+          <select class="" name="plataforma" value = "<?php echo (($_POST['plataforma'])??'') ?>"><span class="error" ><?php echo($errorplataforma); ?></span>
+            <option value="">Seleccione plataforma</option>
             <option value="ps4">PlayStation 4</option>
             <option value="xbox">Xbox One</option>
             <option value="pc">PC</option>
