@@ -29,6 +29,14 @@
     $errorPais = '';
     $ext = '';
     if($_POST){
+      $query2 = $conex->prepare('SELECT * FROM usuarios WHERE email = :email');
+      $query2->bindvalue(':email', $_POST['email']);
+      $query2->execute();
+      $query3 = $conex->prepare('SELECT * FROM usuarios WHERE nombre = :name');
+      $query3->bindvalue(':name', $_POST['name']);
+      $query3->execute();
+      $cantUsuarios = $query3->rowcount();
+      $cantEmails = $query2->rowcount();
       if(empty($_POST)){
         $error = 1;
         $errorDatos = 'ingrese datos';
@@ -77,8 +85,14 @@
             $error = 12;
             $errorAvatar = 'formato invalido';
       }
-      var_dump($_POST);
-      var_dump($error);
+     if($cantUsuarios){
+       $error = 13;
+       $errorUsuario = 'el usuario ya existe';
+     }
+     if($cantEmails){
+       $error = 14;
+       $errorEmail = 'el email ya existe';
+     }
       if($error ===  0){
         move_uploaded_file($_FILES['avatar']['tmp_name'], 'avatars/'.$_POST['name'].'.'.$ext);
 
