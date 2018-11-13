@@ -16,98 +16,20 @@
   <body>
     <?php
     include("header.php");
-    include("conex.php");
-    $error = 0;
-    $errorNombre = '';
-    $errorDatos = '';
-    $errorEmail = '';
-    $errorplataforma = '';
-    $errorUsuario = '';
-    $errorPassword = '';
-    $errorPassword1 = '';
-    $errorAvatar = '';
-    $errorPais = '';
-    $ext = '';
-    if($_POST){
-      $query2 = $conex->prepare('SELECT * FROM usuarios WHERE email = :email');
-      $query2->bindvalue(':email', $_POST['email']);
-      $query2->execute();
-      $query3 = $conex->prepare('SELECT * FROM usuarios WHERE nombre = :name');
-      $query3->bindvalue(':name', $_POST['name']);
-      $query3->execute();
-      $cantUsuarios = $query3->rowcount();
-      $cantEmails = $query2->rowcount();
-      if(empty($_POST)){
-        $error = 1;
-        $errorDatos = 'ingrese datos';
-      }
-      if(empty($_POST['user'])){
-        $error = 2;
-        $errorUsuario = 'ingrese usuario';
-      }
-      if(empty($_POST['name'])){
-        $error = 3;
-        $errorNombre = 'Ingrese un nombre';
-      }
-      if((strlen($_POST['name']) < 4)){
-        $error = 4;
-        $errorNombre = 'nombre demasiado corto';
-      }
-      if(empty($_POST['email'])){
-        $error = 5;
-        $errorEmail = 'ingrese email';
-      }
-      if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-          $error = 6;
-          $errorEmail = 'Email invalido';
-      }
-      if(empty($_POST['password'])){
-        $error = 7;
-        $errorPassword = 'Ingrese contraseña';
-      }
-      if(!($_POST['password'] == $_POST['password1'])){
-        $error = 8;
-        $errorPassword1 = 'Las contraseñas deben ser iguales';
-      }
-      if(empty($_POST['plataforma'])){
-        $error =9;
-        $errorplataforma = 'Seleccione una plataforma de la lista';
-      }
-      if(empty($_POST['pais'])){
-        $error = 10;
-        $errorPais = 'seleccione un pais de la lista';
-      }
-      if(empty($_FILES['avatar']))
-        $error = 11;
-      else
-        $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-     if(!( $ext == 'jpg' ||  $ext == 'png' || $ext == 'jpeg' )){
-            $error = 12;
-            $errorAvatar = 'formato invalido';
-      }
-     if($cantUsuarios){
-       $error = 13;
-       $errorUsuario = 'el usuario ya existe';
-     }
-     if($cantEmails){
-       $error = 14;
-       $errorEmail = 'el email ya existe';
-     }
-      if($error ===  0){
+    include ("classes/db.php");
+    include ("classes/usuario.php");
+    include ("classes/validador.php");
+    $db = new db();
+      if(validarRegistro($_POST, $db, $_FILES)){
+        $usuario = New Usuario($_POST['name'],$_POST['email'],$_POST['password'],$_FILES['avatar']['name']);
+        $db->guardarUsuario($usuario);
         move_uploaded_file($_FILES['avatar']['tmp_name'], 'avatars/'.$_POST['name'].'.'.$ext);
+        //loguear usuario
+        header("Location:perfilUsuario.php");exit;
+        }
 
-        $registrar = 'INSERT INTO usuarios (nombre, email, pais, password, plataforma) VALUES (:nombre, :email, :pais, :password, :plataforma)';
-        $ins = $conex->prepare($registrar);
-        $ins->bindValue(':nombre', $_POST['name']);
-        $ins->bindValue(':email', $_POST['email']);
-        $ins->bindValue(':pais', $_POST['pais']);
-        $ins->bindValue(':password', $_POST['password']);
-        $ins->bindValue(':plataforma', $_POST['plataforma']);
-        $ins->execute();
-      }
-}
-
-    ?>
+  }
+?>
     <div class="registrate">
       <h2>Se parte de la comunidad <span style="color:rgb(203, 51, 42);">Digital</span>Games!</h2>
     </div>
@@ -116,14 +38,14 @@
 
       <div class="contenedor-fluid">
         <form class="login" action="registro.php" method="post" enctype="multipart/form-data" >
-          <span class="error"><?php echo($errorDatos); ?></span> <br>
-          <label for="">Nombre Completo: <span class="error" ><?php echo($errorNombre); ?></span> <br><input type="text" name="name" value="<?php echo (($_POST['name'])??'') ?>"></label>
+          <span class="error"><?php echo($error['Datos']??''); ?></span> <br>
+          <label for="">Nombre Completo: <span class="error" ><?php echo($errores['Nombre']??''); ?></span> <br><input type="text" name="name" value="<?php echo (($_POST['name'])??'') ?>"></label>
           <br><br>
-          <label for="">Usuario: <span class="error" ><?php echo($errorUsuario); ?></span> <br><input type="text" name="user" value="<?php echo (($_POST['user'])??'') ?>"></label>
+          <label for="">Usuario: <span class="error" ><?php echo($errores['Usuario']??''); ?></span> <br><input type="text" name="user" value="<?php echo (($_POST['user'])??'') ?>"></label>
           <br><br>
-          <label for="">Email: <span class="error" ><?php echo($errorEmail); ?></span><br><input type="email" name="email" value="<?php echo (($_POST['email'])??'') ?>"></label>
+          <label for="">Email: <span class="error" ><?php echo($errores['Email']??''); ?></span><br><input type="email" name="email" value="<?php echo (($_POST['email'])??'') ?>"></label>
           <br><br>
-          <span class="error" ><?php echo($errorPais); ?></span><br>
+          <span class="error" ><?php echo($error['Pais']); ?></span><br>
           <select name="pais" value = "<?php echo (($_POST['pais'])??'') ?>">
             <option value="">Seleccione Pais...</option>
             <option value="AF">Afghanistan</option>
@@ -375,13 +297,13 @@
             <option value="ZW">Zimbabwe</option>
           </select>
           <br><br>
-          <label for="">Avatar: <span class="error" ><?php echo($errorAvatar); ?></span><input type="file" name="avatar" value="<?php echo (($_FILES['avatar'])??'') ?>"></label>
+          <label for="">Avatar: <span class="error" ><?php echo($errores['Avatar']??''); ?></span><input type="file" name="avatar" value=""></label>
           <br><br>
-          <label for="">Contraseña: <span class="error" ><?php echo($errorPassword); ?></span><br><input type="password" name="password" value=""></label>
+          <label for="">Contraseña: <span class="error" ><?php echo($errores['Password']??''); ?></span><br><input type="password" name="password" value=""></label>
           <br><br>
-          <label for="">Repetir contraseña: <span class="error"><?php echo($errorPassword1); ?></span><br><input type="password" name="password1" value=""></label>
+          <label for="">Repetir contraseña: <span class="error"><?php echo($errores['Password1']??''); ?></span><br><input type="password" name="password1" value=""></label>
           <br><br>
-          <select class="" name="plataforma" value = "<?php echo (($_POST['plataforma'])??'') ?>"><span class="error" ><?php echo($errorplataforma); ?></span>
+          <select class="" name="plataforma" value = "<?php echo (($_POST['plataforma'])??'') ?>"><span class="error" ><?php echo($errores['plataforma']??''); ?></span>
             <option value="">Seleccione plataforma</option>
             <option value="ps4">PlayStation 4</option>
             <option value="xbox">Xbox One</option>
