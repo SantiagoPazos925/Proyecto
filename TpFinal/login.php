@@ -1,3 +1,6 @@
+<?php require_once("classes/autoload.php"); ?>
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -14,24 +17,16 @@
   </head>
   <?php
   include("header.php");
+
   $errorDatos = '';
   $errorUsuario = '';
   $errorPassword = '';
 if($_POST){
-  if(!empty($_POST)){
-    if (!empty($_POST['user'])){
-          if(!empty($_POST['password'])){
-              echo 'todo ok';
-            }
-            else
-            $errorPassword = 'ingrese contraseña';
-          }
-          else
-            $errorUsuario = 'ingrese usuario';
-          }
-          else {
-            $errorDatos = 'Ingrese datos';
-          }
+
+  $auth->logear($_POST["nick"]);
+
+          // $validador->validarNick($_POST["nick"]);
+          // $validador->validarPassword($_POST["password"]);
   }
 
   ?>
@@ -42,13 +37,14 @@ if($_POST){
   <div class="contenedorForm col-10 offset-1">
 
     <div class="contenedor ">
-      <form class="login" action="login.php" method="post" enctype="multipart/form-data" onsubmit="return false">
+      <form class="login" action="login.php" method="post" enctype="multipart/form-data" >
         <span class="error"><?php echo($errorDatos); ?></span> <br>
-        <label for="">Usuario: <span class="error"><?php echo($errorUsuario); ?></span> <br><input type="text" name="user" value=""></label>
+        <label for="">Usuario: <span class="error"><?php echo($errorUsuario); ?></span> <br><input type="text" name="nick" value=""></label>
         <br><br>
         <label for="">Contraseña: <span class="error" ><?php echo($errorPassword); ?></span><br><input type="password" name="password" value=""></label>
         <br><br><input type="submit" name="" value="Ingresar" class="btn btn-primary">
       </form>
+
     </div>
 
 </body>

@@ -2,7 +2,7 @@
 
 require_once("db.php");
 
-class Validator {
+class Validador {
 	function validarLogin($informacion, DB $db) {
 		$errores = [];
 
@@ -32,74 +32,75 @@ class Validator {
 			}
 		}
   }
-  function validarRegistro(){
-    $error = 0;
+  function validarRegistro($post, BaseDeDatos $db, $files){
+
     $errores= [];
     $ext = '';
-    if($_POST){
-      $query2 = $db->conex->prepare('SELECT * FROM usuarios WHERE email = :email');
-      $query2->bindvalue(':email', $_POST['email']);
-      $query2->execute();
-      $query3 = $db->conex->prepare('SELECT * FROM usuarios WHERE nombre = :user');
-      $query3->bindvalue(':user', $_POST['user']);
-      $query3->execute();
-      $cantUsuarios = $query3->rowcount();
-      $cantEmails = $query2->rowcount();
-      if(empty($_POST)){
 
-        $error['Datos'] = 'ingrese datos';
+      $query2 = $db->traerPorNick($post["nick"]);
+
+
+
+
+      if(empty($post)){
+
+        $errores['Datos'] = 'ingrese datos';
       }
-      if(empty($_POST['user'])){
+      if(empty($post['nick'])){
 
         $errores['Usuario'] = 'ingrese usuario';
       }
-      if(empty($_POST['name'])){
+      if(empty($post['nombreCompleto'])){
 
         $errores['Nombre'] = 'Ingrese un nombre';
       }
-      if((strlen($_POST['name']) < 4)){
+      if((strlen($post['nick']) < 4)){
 
         $errores['Nombre'] = 'nombre demasiado corto';
       }
-      if(empty($_POST['email'])){
+      if(empty($post['email'])){
 
         $errores['Email'] = 'ingrese email';
       }
-      if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+      if(!filter_var($post['email'], FILTER_VALIDATE_EMAIL)){
 
-          $error['Email'] = 'Email invalido';
+          $errores['Email'] = 'Email invalido';
       }
-      if(empty($_POST['password'])){
+      if(empty($post['password'])){
 
         $errores['Password'] = 'Ingrese contraseña';
       }
-      if(!($_POST['password'] == $_POST['password1'])){
+      if(!($post['password'] == $post['password1'])){
 
         $errores['Password1'] = 'Las contraseñas deben ser iguales';
       }
-      if(empty($_POST['plataforma'])){
+      if(empty($post['plataforma'])){
 
         $errores['Plataforma'] = 'Seleccione una plataforma de la lista';
       }
-      if(empty($_POST['pais'])){
+      if(empty($post['pais'])){
 
         $errores['Pais'] = 'seleccione un pais de la lista';
       }
-      if(empty($_FILES['avatar']))
-        $error[''] = 11;
+      if(empty($files['avatar']))
+        $errores['Avatar'] = 'Suba una foto';
       else
-        $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+        $ext = pathinfo($files['avatar']['name'], PATHINFO_EXTENSION);
      if(!( $ext == 'jpg' ||  $ext == 'png' || $ext == 'jpeg' )){
 
-            $error['Avatar'] = 'formato invalido';
+            $errores['Avatar'] = 'formato invalido';
       }
-     if($cantUsuarios){
+     if($query2){
 
-       $error['Usuario'] = 'el usuario ya existe';
+       $errores['Usuario'] = 'el usuario ya existe';
      }
-     if($cantEmails){
 
-       $errores['Email'] = 'el email ya existe';
-     }
+
+		if( $files['avatar']['error'] === 0 )
+    {
+      move_uploaded_file($files['avatar']['tmp_name'], 'avatars/'.$post['nick'].'.'.$ext);
+    }
+
      return $errores;
-  }
+	 }
+ }

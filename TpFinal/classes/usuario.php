@@ -1,62 +1,99 @@
 <?php
 
-Class Usuario {
-  protected $id;
-  protected $nombre;
-  protected $email;
-  protected $contraseña;
-  protected $imagen;
+class Usuario {
 
-public function __construct($nombre,$email,$contraseña,$imagen,$id=null){
-  $this->setId($id);
-  $this->setNombre($nombre);
-  $this->setEmail($email);
-  $this->setContraseña($contraseña);
-  $this->setImagen($imagen);
+  private $id;
+  private $nombreCompleto;
+  private $nick;
+  private $email;
+  private $password;
+  private $pais;
+  private $plataforma;
+  private $avatar;
+
+
+  public function Usuario ($nombreCompleto, $nick, $email, $password, $pais, $plataforma,$avatar,$id = null){
+
+    $this->nick = $nick;
+    $this->email = $email;
+    $this->password = $password;
+    $this->nombreCompleto = $nombreCompleto;
+    $this->pais = $pais;
+    $this->plataforma = $plataforma;
+    $this->setAvatar($avatar);
+  }
+  //111111111111111111111111111111111111
+  public function setId($id){
+    $this->id = $id;
+
+  }
+  public function getId(){
+    return $this->id;
+  }
+    //111111111111111111111111111111111111
+  public function setNick($nick){
+    $this->nick = $nick;
+
+  }
+  public function getNick(){
+    return $this->nick;
+  }
+    //111111111111111111111111111111111111
+  public function setEmail($email){
+    $this->email = $email;
+
+  }
+  public function getEmail(){
+    return $this->email;
+  }
+    //111111111111111111111111111111111111
+  public function setPassword($password){
+    $this->password = $password;
+
+  }
+  public function getPassword(){
+    return $this->password;
+
 }
+  //111111111111111111111111111111111111
+  public function setPais($pais){
+  $this->pais = $pais;
 
+  }
+  public function getPais(){
+  return $this->pais;
 
-public function setId($id){
-  $this->id=$id;
-}
+  }
+  //111111111111111111111111111111111111
+  public function setPlataforma($plataforma){
+  $this->plataforma = $plataforma;
 
-public function getId(){
-  return $this->id;
-}
+  }
+  public function getPlataforma(){
+  return $this->plataforma;
 
-public function setNombre($nombre){
-  $this->nombre=$nombre;
-}
+  }
+  //111111111111111111111111111111111111
+  public function setNombreCompleto($nombreCompleto){
+  $this->nombreCompleto = $nombreCompleto;
 
-public function getNombre(){
-  return $this->nombre;
-}
+  }
+  public function getNombreCompleto(){
+  return $this->nombreCompleto;
 
-public function setEmail($email){
-  $this->email=$email;
-}
+  }
+  //111111111111111111111111111111111111
 
-public function getEmail(){
-  return $this->email;
-}
+  public function getAvatar(){
+  return $this->avatar;
 
-public function setContraseña($contraseña){
-  $this->contraseña=$contraseña;
-}
+  }
 
-public function getContraseña(){
-  return $this->contraseña;
-}
-
-public function setImagen($imagen){
-  $this->imagen=$imagen;
-}
-
-public function getImagen(){
-  return $this->imagen;
-}
-
-
+  function setAvatar($files){
+    $ext = pathinfo($files['avatar']['name'], PATHINFO_EXTENSION);
+    $ruta = 'avatars/'.$this->getNick().'.'.$ext;
+    $this->avatar = $ruta;
+  }
 
 
 }

@@ -1,0 +1,27 @@
+.avatar{
+  width: 200px;
+  height: 200px;
+
+
+
+}
+.perfilInfo{
+  padding-top:  175px;
+}
+.contenedorImagenPerfil{
+  text-align: center;
+}
+.infoUsuario{
+  font-family: 'elianto', Arial, sans-serif;
+  padding-top: 10px;
+  background-color: rgb(186, 186, 186);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+.infoUsuario h3 {
+  color:rgb(156, 51, 44);
+}
+.imagenApodo{
+  color:white;
+}

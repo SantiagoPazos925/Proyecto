@@ -1,41 +1,69 @@
 <?php
 
-Class db {
+
+
+  class BaseDeDatos {
+
   protected $dsn = 'mysql:host=localhost;dbname=digitalgames_db;
   charset=utf8mb4;port=3306';
   protected  $user ="root";
   protected  $pass = "";
-  public  $conex;
-  public function __construct(){
-      try{
 
-          $this->conex = new PDO($this->dsn, $this->user, $this->pass);
+  protected  $conex;
 
-      }catch( PDOException $ex ){
 
-          echo 'El error es -> '. $ex->getMessage();
-      }
-    }
+  public function BaseDeDatos(){
 
-    public function getConex(){
-      return $this->conex;
-    }
+  try {
 
-    public function guardarUsuario(Usuario $usu){
-      $query=$this->conex->prepare('INSERT INTO usuarios (nombre, email, contrasena,imagen)VALUES (:nombre,:email,:contrasena,:imagen)');
-      $query->bindValue(':nombre', $usu->getNombre());
-      $query->bindValue(':email', $usu->getEmail());
-      $query->bindValue(':contrasena', $usu->getContraseña());
-      $query->bindValue(':imagen', $usu->getImagen());
-      $query->execute();
-      $id=$this->conex->lastInsertId();
-      $usu->setId($id);
-    }
-    public function traerPorUsuario($usu){
-      $query=$this->conex->prepare('SELECT * FROM usuarios WHERE nombre = :nom');
-      $query->bindValue(':nom',$usu);
-      $query->execute();
-      $user=$query->fetch(PDO::FETCH_ASSOC);
-      return $user;
-    }
-}
+    $this->conex = new PDO($this->dsn, $this->user, $this->pass);
+
+  } catch (\Exception $e) {
+      echo 'El error es -> '. $ex->getMessage();
+  }
+  }
+
+
+  public function guardarUsuario(Usuario $usuario){
+
+
+    $query = $this->conex->prepare("INSERT INTO usuarios ( nombreCompleto, nick, email, password, pais, plataforma, avatar) VALUES ( :nombreCompleto, :nick, :email, :password, :pais, :plataforma, :avatar)");
+
+    $query->bindValue(":nick", $usuario->getNick());
+    $query->bindValue(":email", $usuario->getEmail());
+    $query->bindValue(":password", $usuario->getPassword());
+    $query->bindValue(":nombreCompleto", $usuario->getNombreCompleto());
+    $query->bindValue(":pais", $usuario->getPais());
+    $query->bindValue(":plataforma", $usuario->getPlataforma());
+    $query->bindValue(":avatar", $usuario->getAvatar());
+
+    $query->execute();
+    $id = $this->conex->lastInsertId();
+
+    $usuario->setId($id);
+
+
+
+  }
+  public function traerPorNick($usuario){
+
+
+
+    $query = $this->conex->prepare("SELECT * FROM usuarios WHERE nick = :nick ");
+
+    $query->bindValue(":nick", $usuario);
+    $query->execute();
+
+    $elUsuario = $query->fetch(PDO::FETCH_ASSOC);
+
+    return $elUsuario;
+
+
+
+
+  }
+
+
+
+
+  }
