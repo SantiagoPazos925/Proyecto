@@ -65,16 +65,16 @@ $arrayUsuario = $auth->usuarioLog($bd);
                        </span>
                       </div>
                       <div class="col-12 info">
-                        <span ><h3 >Apodo: </h3> <?php echo $arrayUsuario["nick"] ?>></span><br>
+                        <span ><h3 >Apodo: </h3> <?php echo $arrayUsuario["nick"] ?></span><br>
                       </div>
                       <div class="col-12 info">
-                        <span ><h3 >Email: </h3> <?php echo $arrayUsuario["email"] ?>></span><br>
+                        <span ><h3 >Email: </h3> <?php echo $arrayUsuario["email"] ?></span><br>
                       </div>
                       <div class="col-12 info">
-                        <span ><h3 >Plataforma: </h3> <?php echo $arrayUsuario["plataforma"] ?>"></span><br>
+                        <span ><h3 >Plataforma: </h3> <?php echo $arrayUsuario["plataforma"] ?></span><br>
                       </div>
                       <div class="col-12 info">
-                        <span ><h3 >Pais: </h3> <?php echo $arrayUsuario["pais"] ?>></span><br>
+                        <span ><h3 >Pais: </h3> <?php echo $arrayUsuario["pais"] ?></span><br>
                       </div>
                       <?php
 

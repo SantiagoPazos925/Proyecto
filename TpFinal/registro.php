@@ -19,7 +19,7 @@ $paises=[
     <title>Registrarme</title>
   </head>
   <body>
-    
+
     <?php
     include("header.php");
     require_once("classes/autoload.php");
@@ -55,11 +55,11 @@ $paises=[
       <div class="contenedor-fluid">
         <form class="login" action="registro.php" method="post" enctype="multipart/form-data" >
           <span class="error"></span> <br>
-          <label for="">Nombre Completo: <span class="error" ></span> <br><input type="text" name="nombreCompleto" value=""> </label>
+          <label for="">Nombre Completo: <span class="error" ></span> <br><input type="text" name="nombreCompleto" value="<?php if(isset($_POST['nombreCompleto'])){echo htmlentities($_POST['nombreCompleto']);} ?>"> </label>
           <br><br>
-          <label for="">Usuario: <span class="error" ></span> <br><input type="text" name="nick" value=""></label>
+          <label for="">Usuario: <span class="error" ></span> <br><input type="text" name="nick" value="<?php if(isset($_POST['nick'])){echo htmlentities($_POST['nick']);} ?>"></label>
           <br><br>
-          <label for="">Email: <span class="error" ></span><br><input type="email" name="email" value=""></label>
+          <label for="">Email: <span class="error" ></span><br><input type="email" name="email" value="<?php if(isset($_POST['email'])){echo htmlentities($_POST['email']);} ?>"></label>
           <br><br>
           <span class="error" ></span><br>
           <div class="userData">
@@ -83,7 +83,7 @@ $paises=[
           <br><br>
           <label for="">Repetir contraseña: <span class="error"></span><br><input type="password" name="password1" value=""></label>
           <br><br>
-          <select class="" name="plataforma" value = ""><span class="error" ></span>
+          <select class="" name="plataforma" value = "<?php if(isset($_POST['plataforma'])){echo ($_POST['plataforma']);} ?>"><span class="error" ></span>
             <option value="">Seleccione plataforma</option>
             <option value="ps4">PlayStation 4</option>
             <option value="xbox">Xbox One</option>
