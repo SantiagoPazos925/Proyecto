@@ -19,6 +19,7 @@ $paises=[
     <title>Registrarme</title>
   </head>
   <body>
+    
     <?php
     include("header.php");
     require_once("classes/autoload.php");
@@ -28,11 +29,13 @@ $paises=[
       if ($_POST) {
       $errores =  $validador->validarRegistro($_POST, $bd , $_FILES );
 
-      
+
       if(!array_filter($errores)){
         $usuario = new Usuario( $_POST['nombreCompleto'], $_POST['nick'], $_POST['email'], $_POST['password'], $_POST['pais'], $_POST['plataforma'],$_FILES);
         $bd->guardarUsuario($usuario);
+
         header('location: miPerfil.php?nick='.$_POST['nick'].'');
+
       }
     }
 
@@ -42,6 +45,7 @@ $paises=[
 
 
 ?>
+
     <div class="registrate">
       <h2>Se parte de la comunidad <span style="color:rgb(203, 51, 42);">Digital</span>Games!</h2>
     </div>

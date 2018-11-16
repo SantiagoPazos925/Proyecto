@@ -7,7 +7,7 @@
   protected $dsn = 'mysql:host=localhost;dbname=digitalgames_db;
   charset=utf8mb4;port=3306';
   protected  $user ="root";
-  protected  $pass = "root";
+  protected  $pass = "";
 
   protected  $conex;
 
@@ -62,6 +62,21 @@
 
 
   }
+  // public function editarUsuario($usuario){
+  //   $this->traerPorNick($usuario);
+  //   $query = $this->conex->prepare("UPDATE `usuarios` SET `nombreCompleto` = :nombreCompleto =, `nick` = :nick , `email` = :email , `pais` = :pais , `plataforma` = :plataforma ");
+  //
+  //   $query->bindValue(":nick", $usuario->getNick());
+  //   $query->bindValue(":email", $usuario->getEmail());
+  //   $query->bindValue(":password", $usuario->getPassword());
+  //   $query->bindValue(":nombreCompleto", $usuario->getNombreCompleto());
+  //   $query->bindValue(":pais", $usuario->getPais());
+  //   $query->bindValue(":plataforma", $usuario->getPlataforma());
+  //   $query->bindValue(":avatar", $usuario->getAvatar());
+  //
+  //
+  //
+  // }
 
 
 

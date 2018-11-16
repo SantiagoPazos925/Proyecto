@@ -1,3 +1,9 @@
+<?php
+require_once("classes/autoload.php");
+
+$arrayUsuario = $auth->usuarioLog($bd);
+
+ ?>
 <div class="container-fluid header ">
 
 
@@ -17,16 +23,31 @@
           ["cate"=>"Preguntas Frecuentes","url"=>"faq.php", "col"=>"col-4"],
           ["cate"=>"Registro","url"=>"registro.php", "col"=>"col-2"],
           ["cate"=>"Login","url"=>"login.php", "col"=>"col-2"],
-          ["cate"=>"Usuario","url"=>"miPerfil.php", "col"=>"col-1"]
+          ["cate"=>$arrayUsuario["nick"],"url"=>"miPerfil.php", "col"=>"col-2"]
 
         ];
        ?>
       <ul class="row  navigation" style="text-align: center;">
-        <?php foreach ($categoria as $cat): ?>
-          <div id="navText" class="<?php echo $cat["col"] ?>">
-            <a id="navText" href="<?php echo $cat["url"] ?>"><li ><?php echo $cat["cate"] ?></li></a>
-          </div>
-        <?php endforeach; ?>
+        <?php foreach ($categoria as $cat){
+          if (isset($arrayUsuario["nick"])){
+            if ($cat["cate"] == "Registro" || $cat["cate"] == "Login") {
+
+          }else {
+              echo '<div id="navText" class="'.$cat["col"].'"><a id="navText" href="'.$cat["url"].'"><li >'.$cat["cate"].'</li></a></div>';
+          }
+
+        }elseif (isset($cat["cate"])) {
+            echo '<div id="navText" class="'.$cat["col"].'"><a id="navText" href="'.$cat["url"].'"><li >'.$cat["cate"].'</li></a></div>';
+        }
+
+
+
+        }
+        ?>
+
+
+
+
           <div class="col-2 col-lg-2 carrito">
 
           <i class="ion-android-cart"></i>

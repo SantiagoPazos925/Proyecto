@@ -39,32 +39,58 @@ $arrayUsuario = $auth->usuarioLog($bd);
 
             <div class=" col-6 contenedorImagenPerfil">
               <div class="col-12">
-                <img src="images/profile.png" class="img-fluid avatar" alt="Responsive image" class="text-center">
+                <img src=" <?php echo $arrayUsuario['avatar'] ?>" class="img-fluid avatar" alt="Responsive image" class="text-center" id="avatar">
               </div>
                 <div class="col-12 imagenApodo">
-                  JorgSanch <br><br><button type="button" name="button"><a href="cierreSesion.php?nick=true">Desconectarse</a></button>
+                  <?php echo $arrayUsuario["nick"] ?> <br><br><button type="button" name="button"><a href="cierreSesion.php?nick=true">Desconectarse</a></button>
                 </div>
 
             </div>
             <div class="col-6 ">
+                  <form class="" action="miPerfil.php" method="post">
+                    <div class="row col-12  infoUsuario">
+                      <div class="col-12 info">
+                        <span ><h3 >Nombre Completo:</h3> <?php  echo $arrayUsuario["nombreCompleto"]; ?>
+                          <?php
 
-                  <div class="row col-12  infoUsuario">
-                    <div class="col-12 info">
-                      <span ><h3 >Nombre Completo:</h3> Jorge Sanchez</span><br>
+                         // if(!$_POST || isset($_POST["editarNombreCompleto"])){
+                         //   echo $arrayUsuario["nombreCompleto"];
+                         // }
+                         //   else {
+                         //     echo '<input type="text" name="nombreCompleto" value="" placeholder = "'.$arrayUsuario["nombreCompleto"].'">';
+                         //   }
+                         //   var_dump($_POST["nombreCompleto"]);
+
+                         ?>
+                       </span>
+                      </div>
+                      <div class="col-12 info">
+                        <span ><h3 >Apodo: </h3> <?php echo $arrayUsuario["nick"] ?>></span><br>
+                      </div>
+                      <div class="col-12 info">
+                        <span ><h3 >Email: </h3> <?php echo $arrayUsuario["email"] ?>></span><br>
+                      </div>
+                      <div class="col-12 info">
+                        <span ><h3 >Plataforma: </h3> <?php echo $arrayUsuario["plataforma"] ?>"></span><br>
+                      </div>
+                      <div class="col-12 info">
+                        <span ><h3 >Pais: </h3> <?php echo $arrayUsuario["pais"] ?>></span><br>
+                      </div>
+                      <?php
+
+                     // if(!$_POST || isset($_POST["editarNombreCompleto"])){
+                     //   echo '<button type="submit" name="NombreCompleto" style="margin-left:10px;">Editar</button><br>';
+                     // }
+                     //   else {
+                     //     echo '<button type="submit" name="" style="margin-left:10px;">Guardar</button><br>';
+                     //   }
+
+
+                     ?>
+
                     </div>
-                    <div class="col-12 info">
-                      <span ><h3 >Apodo: </h3> JorSanch</span><br>
-                    </div>
-                    <div class="col-12 info">
-                      <span ><h3 >Email: </h3> JorgeSanchez@email.com</span><br>
-                    </div>
-                    <div class="col-12 info">
-                      <span ><h3 >Plataforma: </h3> Xbox</span><br>
-                    </div>
-                    <div class="col-12 info">
-                      <span ><h3 >Pais: </h3> Bolivia</span><br>
-                    </div>
-                  </div>
+                  </form>
+
 
 
 

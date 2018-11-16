@@ -10,6 +10,7 @@
 }
 .contenedorImagenPerfil{
   text-align: center;
+
 }
 .infoUsuario{
   font-family: 'elianto', Arial, sans-serif;
@@ -24,4 +25,12 @@
 }
 .imagenApodo{
   color:white;
+  padding-top: 10px;
+}
+#avatar{
+  border-radius: 100%;
+  border: 5px solid #b8b8b8;
+}
+.info ::-webkit-input-placeholder{
+  text-align:left;
 }
