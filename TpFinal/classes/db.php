@@ -18,7 +18,7 @@
 
     $this->conex = new PDO($this->dsn, $this->user, $this->pass);
 
-  } catch (\Exception $e) {
+  } catch (\Exception $ex) {
       echo 'El error es -> '. $ex->getMessage();
   }
   }

@@ -50,12 +50,21 @@ $paises=[
 
       <div class="contenedor-fluid">
         <form class="login" action="registro.php" method="post" enctype="multipart/form-data" >
+<<<<<<< HEAD
           <span class="error"><?=$errores['Datos']??''?></span> <br>
           <label for="">Nombre Completo: <span class="error" ><?=$errores['Nombre']??''?></span> <br><input type="text" name="nombreCompleto" value="<?php echo (($_POST['nombreCompleto'])??'')?>"> </label>
           <br><br>
           <label for="">Usuario: <span class="error" ><?=$errores['Usuario']??''?></span> <br><input type="text" name="nick" value="<?php echo (($_POST['nick'])??'')?>"></label>
           <br><br>
           <label for="">Email: <span class="error" ><?=$errores['Email']??''?></span><br><input type="email" name="email" value="<?php echo (($_POST['email'])??'')?>"></label>
+=======
+          <span class="error"></span> <br>
+          <label for="">Nombre Completo: <span class="error" ></span> <br><input type="text" name="nombreCompleto" value="<?php if(isset($_POST['nombreCompleto'])){echo htmlentities($_POST['nombreCompleto']);} ?>"> </label>
+          <br><br>
+          <label for="">Usuario: <span class="error" ></span> <br><input type="text" name="nick" value="<?php if(isset($_POST['nick'])){echo htmlentities($_POST['nick']);} ?>"></label>
+          <br><br>
+          <label for="">Email: <span class="error" ></span><br><input type="email" name="email" value="<?php if(isset($_POST['email'])){echo htmlentities($_POST['email']);} ?>"></label>
+>>>>>>> 0ec0d7ccd44d8b92f552e1f1787db8e0bbff4fd4
           <br><br>
           <span class="error" ><?=$errores['Pais']??''?></span><br>
           <div class="userData">
@@ -79,7 +88,11 @@ $paises=[
           <br><br>
           <label for="">Repetir contraseña: <span class="error"><?=$errores['Password1']??''?></span><br><input type="password" name="password1" value=""></label>
           <br><br>
+<<<<<<< HEAD
           <select class="" name="plataforma" value = ""><span class="error" ><?=$errores['Plataforma']??''?></span>
+=======
+          <select class="" name="plataforma" value = "<?php if(isset($_POST['plataforma'])){echo ($_POST['plataforma']);} ?>"><span class="error" ></span>
+>>>>>>> 0ec0d7ccd44d8b92f552e1f1787db8e0bbff4fd4
             <option value="">Seleccione plataforma</option>
             <option value="ps4">PlayStation 4</option>
             <option value="xbox">Xbox One</option>
