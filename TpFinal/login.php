@@ -17,16 +17,15 @@
   </head>
   <?php
   include("header.php");
-
+  require_once("classes/autoload.php");
   $errorDatos = '';
   $errorUsuario = '';
   $errorPassword = '';
 if($_POST){
+  $errores = $validador->validarLogin($_POST, $bd);
+  if(count($errores) == 0)
+    $auth->logear($_POST["nick"]);
 
-  $auth->logear($_POST["nick"]);
-
-          // $validador->validarNick($_POST["nick"]);
-          // $validador->validarPassword($_POST["password"]);
   }
 
   ?>
@@ -39,9 +38,9 @@ if($_POST){
     <div class="contenedor ">
       <form class="login" action="login.php" method="post" enctype="multipart/form-data" >
         <span class="error"><?php echo($errorDatos); ?></span> <br>
-        <label for="">Usuario: <span class="error"><?php echo($errorUsuario); ?></span> <br><input type="text" name="nick" value=""></label>
+        <label for="">Usuario: <span class="error"><?= $errores['usuario']??''?></span> <br><input type="text" name="nick" value=""></label>
         <br><br>
-        <label for="">Contraseña: <span class="error" ><?php echo($errorPassword); ?></span><br><input type="password" name="password" value=""></label>
+        <label for="">Contraseña: <span class="error" ><?= $errores['password']??''?></span><br><input type="password" name="password" value=""></label>
         <br><br><input type="submit" name="" value="Ingresar" class="btn btn-primary">
       </form>
 

@@ -12,7 +12,7 @@
   protected  $conex;
 
 
-  public function BaseDeDatos(){
+  public function __construct(){
 
   try {
 
@@ -23,7 +23,9 @@
   }
   }
 
-
+  public function getConex(){
+    return $this->conex;
+  }
   public function guardarUsuario(Usuario $usuario){
 
 

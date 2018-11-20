@@ -19,18 +19,14 @@ $paises=[
     <title>Registrarme</title>
   </head>
   <body>
-    
+
     <?php
     include("header.php");
     require_once("classes/autoload.php");
 
-
-
       if ($_POST) {
       $errores =  $validador->validarRegistro($_POST, $bd , $_FILES );
-
-
-      if(!array_filter($errores)){
+      if(count($errores)==0){
         $usuario = new Usuario( $_POST['nombreCompleto'], $_POST['nick'], $_POST['email'], $_POST['password'], $_POST['pais'], $_POST['plataforma'],$_FILES);
         $bd->guardarUsuario($usuario);
 
@@ -54,14 +50,14 @@ $paises=[
 
       <div class="contenedor-fluid">
         <form class="login" action="registro.php" method="post" enctype="multipart/form-data" >
-          <span class="error"></span> <br>
-          <label for="">Nombre Completo: <span class="error" ></span> <br><input type="text" name="nombreCompleto" value=""> </label>
+          <span class="error"><?=$errores['Datos']??''?></span> <br>
+          <label for="">Nombre Completo: <span class="error" ><?=$errores['Nombre']??''?></span> <br><input type="text" name="nombreCompleto" value="<?php echo (($_POST['nombreCompleto'])??'')?>"> </label>
           <br><br>
-          <label for="">Usuario: <span class="error" ></span> <br><input type="text" name="nick" value=""></label>
+          <label for="">Usuario: <span class="error" ><?=$errores['Usuario']??''?></span> <br><input type="text" name="nick" value="<?php echo (($_POST['nick'])??'')?>"></label>
           <br><br>
-          <label for="">Email: <span class="error" ></span><br><input type="email" name="email" value=""></label>
+          <label for="">Email: <span class="error" ><?=$errores['Email']??''?></span><br><input type="email" name="email" value="<?php echo (($_POST['email'])??'')?>"></label>
           <br><br>
-          <span class="error" ></span><br>
+          <span class="error" ><?=$errores['Pais']??''?></span><br>
           <div class="userData">
               <div class="labelUserData">
                 <label for="userCountry"> País de nacimiento:</label>
@@ -77,13 +73,13 @@ $paises=[
               </div>
           </div>
           <br><br>
-          <label for="">Avatar: <span class="error" ></span><input type="file" name="avatar" value=""></label>
+          <label for="">Avatar: <span class="error" ><?=$errores['Avatar']??''?></span><input type="file" name="avatar" value=""></label>
           <br><br>
-          <label for="">Contraseña: <span class="error" ></span><br><input type="password" name="password" value=""></label>
+          <label for="">Contraseña: <span class="error" ><?=$errores['Password']??''?></span><br><input type="password" name="password" value=""></label>
           <br><br>
-          <label for="">Repetir contraseña: <span class="error"></span><br><input type="password" name="password1" value=""></label>
+          <label for="">Repetir contraseña: <span class="error"><?=$errores['Password1']??''?></span><br><input type="password" name="password1" value=""></label>
           <br><br>
-          <select class="" name="plataforma" value = ""><span class="error" ></span>
+          <select class="" name="plataforma" value = ""><span class="error" ><?=$errores['Plataforma']??''?></span>
             <option value="">Seleccione plataforma</option>
             <option value="ps4">PlayStation 4</option>
             <option value="xbox">Xbox One</option>
